@@ -8,8 +8,9 @@ WORKDIR /app
 COPY . /app
 
 # Install any dependencies
-RUN apk add --no-cache gcc musl-dev libffi-dev openssl-dev && \
-    pip install --no-cache-dir flask requests matplotlib
+RUN apk update && \
+    apk add --no-cache gcc musl-dev libffi-dev openssl-dev freetype-dev libpng-dev && \
+    pip install --no-cache-dir -r requirements.txt
 
 # Expose port
 EXPOSE 5000
